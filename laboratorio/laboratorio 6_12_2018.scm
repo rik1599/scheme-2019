@@ -29,6 +29,18 @@
     (hanoi-picture-rec n n k 1 2 3 0 0 0 (towers-background n))
     ))
 
+(define hanoi-picture-list
+  (lambda (n)
+    (reverse (hanoi-picture-list-rec n 0 null))
+    ))
+
+(define hanoi-picture-list-rec
+  (lambda (n k pic-list)
+    (if (> k (- (expt 2 n) 1))
+        pic-list
+        (hanoi-picture-list-rec n (+ k 1) (cons (hanoi-picture n k) pic-list))
+        )))
+
 (hanoi-disks 3 0)
 (hanoi-disks 3 1)
 (hanoi-disks 3 2)
